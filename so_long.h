@@ -9,10 +9,10 @@ typedef struct s_path
 {
 	char	*player[2];
 	char	*ground;
-	char	*coin;
+	int		coin;
 	int		i;
 	int		mov;
-	int		change;
+	int		eat;
 }			t_path;
 
 typedef struct s_game

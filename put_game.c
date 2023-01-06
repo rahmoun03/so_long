@@ -47,14 +47,30 @@ void	ft_up(t_game *game)
 		game->y -= 50;
 		put_image(game, "./asset/start/pin.xpm");
 	}
-	else if (game->start > 2 && game->map[(game->ylpayer / 50) - 1][game->xlpayer / 50] != '1'
-		&& game->map[(game->ylpayer / 50) - 1][game->xlpayer / 50] != 'E')
+	else if (game->start > 2 && game->map[(game->ylpayer / 50)
+			- 1][game->xlpayer / 50] != '1' && game->map[(game->ylpayer / 50)
+			- 1][game->xlpayer / 50] != 'E')
 	{
+		if (game->map[(game->ylpayer / 50) - 1][game->xlpayer / 50] == 'C')
+		{
+			game->path->eat++;
+			game->map[(game->ylpayer / 50) - 1][game->xlpayer / 50] = '0';
+		}
 		put_player(game, game->path->ground);
 		game->ylpayer -= 50;
 		put_player(game, game->path->ground);
 		put_player(game, game->path->player[game->path->i]);
 		printf("MOVES : %d\n", ++game->path->mov);
+	}
+	else if (game->start > 2 && game->map[(game->ylpayer / 50)
+			- 1][game->xlpayer / 50] != '1'
+			&& game->path->eat == game->path->coin)
+	{
+		put_player(game, game->path->ground);
+		game->ylpayer -= 50;
+		put_player(game, game->path->player[game->path->i]);
+		printf("MOVES : %d\n", ++game->path->mov);
+		exit(0);
 	}
 }
 
@@ -70,14 +86,30 @@ void	ft_down(t_game *game)
 		game->y += 50;
 		put_image(game, "./asset/start/pin.xpm");
 	}
-	else if (game->start > 2 && game->map[(game->ylpayer / 50) + 1][game->xlpayer / 50] != '1'
-		&& game->map[(game->ylpayer / 50) + 1][game->xlpayer / 50] != 'E')
+	else if (game->start > 2 && game->map[(game->ylpayer / 50)
+			+ 1][game->xlpayer / 50] != '1' && game->map[(game->ylpayer / 50)
+			+ 1][game->xlpayer / 50] != 'E')
 	{
+		if (game->map[(game->ylpayer / 50) + 1][game->xlpayer / 50] == 'C')
+		{
+			game->path->eat++;
+			game->map[(game->ylpayer / 50) + 1][game->xlpayer / 50] = '0';
+		}
 		put_player(game, game->path->ground);
 		game->ylpayer += 50;
 		put_player(game, game->path->ground);
 		put_player(game, game->path->player[game->path->i]);
 		printf("MOVES : %d\n", ++game->path->mov);
+	}
+	else if (game->start > 2 && game->map[(game->ylpayer / 50)
+			+ 1][game->xlpayer / 50] != '1'
+			&& game->path->eat == game->path->coin)
+	{
+		put_player(game, game->path->ground);
+		game->ylpayer += 50;
+		put_player(game, game->path->player[game->path->i]);
+		printf("MOVES : %d\n", ++game->path->mov);
+		exit(0);
 	}
 }
 
@@ -91,15 +123,30 @@ void	ft_right(t_game *game)
 		put_image(game, game->path->player[game->path->i]);
 		game->x -= 100;
 	}
-	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer / 50)
-		+ 1] != '1' && game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer / 50)
-		+ 1] != 'E')
+	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer
+				/ 50) + 1] != '1' && game->start > 2 && game->map[game->ylpayer
+			/ 50][(game->xlpayer / 50) + 1] != 'E')
 	{
+		if (game->map[game->ylpayer / 50][(game->xlpayer / 50) + 1] == 'C')
+		{
+			game->path->eat++;
+			game->map[game->ylpayer / 50][(game->xlpayer / 50) + 1] = '0';
+		}
 		put_player(game, game->path->ground);
 		game->xlpayer += 50;
 		put_player(game, game->path->ground);
 		put_player(game, game->path->player[game->path->i]);
 		printf("MOVES : %d\n", ++game->path->mov);
+	}
+	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer
+				/ 50) + 1] != '1' && game->start > 2
+			&& game->path->eat == game->path->coin)
+	{
+		put_player(game, game->path->ground);
+		game->xlpayer += 50;
+		put_player(game, game->path->player[game->path->i]);
+		printf("MOVES : %d\n", ++game->path->mov);
+		exit(0);
 	}
 }
 
@@ -113,27 +160,43 @@ void	ft_lift(t_game *game)
 		put_image(game, game->path->player[game->path->i]);
 		game->x -= 100;
 	}
-	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer / 50)
-		- 1] != '1' && game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer / 50)
-		- 1] != 'E')
+	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer
+				/ 50) - 1] != '1' && game->start > 2 && game->map[game->ylpayer
+			/ 50][(game->xlpayer / 50) - 1] != 'E')
 	{
+		if (game->map[game->ylpayer / 50][(game->xlpayer / 50) - 1] == 'C')
+		{
+			game->path->eat++;
+			game->map[game->ylpayer / 50][(game->xlpayer / 50) - 1] = '0';
+		}
 		put_player(game, game->path->ground);
 		game->xlpayer -= 50;
 		put_player(game, game->path->ground);
 		put_player(game, game->path->player[game->path->i]);
 		printf("MOVES : %d\n", ++game->path->mov);
 	}
+	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer
+				/ 50) - 1] != '1' && game->start > 2
+			&& game->path->eat == game->path->coin)
+	{
+		put_player(game, game->path->ground);
+		game->xlpayer -= 50;
+		put_player(game, game->path->player[game->path->i]);
+		printf("MOVES : %d\n", ++game->path->mov);
+		exit(0);
+	}
 }
 
 int	key_hook(int key, t_game *game)
 {
-	if (key == 126) // up
-			ft_up(game);
-	if (key == 125) // down
-			ft_down(game);
-	if (key == 124) // right
+	printf("%d / %d\n", game->path->eat, game->path->coin);
+	if (key == 126 || key == 13) // up
+		ft_up(game);
+	if (key == 125 || key == 1) // down
+		ft_down(game);
+	if (key == 124 || key == 2) // right
 		ft_right(game);
-	if (key == 123) // lift
+	if (key == 123 || key == 0) // lift
 		ft_lift(game);
 	if (key == 53) // esc
 	{
@@ -178,13 +241,17 @@ void	put_compenent(t_game *game)
 		game->ylpayer = game->y;
 	}
 	if (game->map[game->y / 50][game->x / 50] == 'C')
+	{
 		put_image(game, "./asset/coin/coin.xpm");
+		game->path->coin++;
+	}
 	if (game->map[game->y / 50][game->x / 50] == 'E')
 		put_image(game, "./asset/dor/dor.xpm");
 }
 
 void	draw_map(t_game *game)
 {
+	game->path->coin = 0;
 	game->chight = game->hight;
 	game->cwidth = game->width;
 	ground(game);
@@ -208,7 +275,8 @@ void	draw_start(t_game *game)
 	game->start = 0;
 	game->y = 0;
 	ground(game);
-	mlx_string_put(game->mlx, game->win, 10, game->chight - 30, 000255000000, "press entre to start");
+	mlx_string_put(game->mlx, game->win, 10, game->chight - 30, 000255000000,
+			"press entre to start");
 	game->x = (ft_strlen(game->map[0]) / 2 - 1) * 50;
 	game->y = (ft_wc_l(game->map) / 2 - 1) * 50;
 	put_image(game, "./asset/start/start.xpm");
@@ -219,7 +287,6 @@ void	draw_start(t_game *game)
 	put_image(game, "./asset/start/exit.xpm");
 	game->y += 50;
 	game->x += 50;
-	printf("{y:%d} {x:%d}\n", game->y, game->x);
 	put_image(game, game->path->player[game->path->i]);
 	game->x -= 100;
 	game->y -= 100;
@@ -234,6 +301,7 @@ void	put_game(t_game *game, t_map *ptr)
 	game->win = mlx_new_window(game->mlx, game->width, game->hight, " BERCHO ");
 	game->path->i = 0;
 	game->path->mov = 0;
+	game->path->eat = 0;
 	set_player_path(game);
 	game->map = ptr->maps;
 	draw_start(game);
