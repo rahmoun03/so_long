@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars2.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/07 23:27:52 by arahmoun          #+#    #+#             */
+/*   Updated: 2023/01/08 03:22:57 by arahmoun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 #include "so_long.h"
 
@@ -48,9 +60,19 @@ char	**ft_strci(char **src)
 	return (dst);
 }
 
+void	ft_free_tmp(char **tmp)
+{
+	int	i;
+
+	i = 0;
+	while (tmp[i])
+		free(tmp[i++]);
+}
+
 int	p_e_c(t_map *ptr)
 {
 	t_ft	*tmp;
+	int		check;
 
 	tmp = (t_ft *)malloc(sizeof(t_ft));
 	tmp->i = 0;
@@ -64,13 +86,11 @@ int	p_e_c(t_map *ptr)
 	while (tmp->tmp[tmp->colum])
 		tmp->colum++;
 	flood_fill(tmp, tmp->i, tmp->j);
-	tmp->i = 0;
-	while (tmp->tmp[tmp->i])
-	{
-		printf("%s\n", tmp->tmp[tmp->i]);
-		tmp->i++;
-	}
-	return (ft_search(tmp->tmp));
+	check = ft_search(tmp->tmp);
+	ft_free_tmp(tmp->tmp);
+	free(tmp->tmp);
+	free(tmp);
+	return (check);
 }
 
 void	flood_fill(t_ft *tmp, int i, int j)

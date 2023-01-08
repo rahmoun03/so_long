@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/07 23:27:29 by arahmoun          #+#    #+#             */
+/*   Updated: 2023/01/08 01:23:23 by arahmoun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "mlx.h"
-# include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
 
 typedef struct s_path
@@ -61,6 +71,22 @@ int			val_or_not(int fd, t_map *ptr);
 void		put_game(t_game *game, t_map *ptr);
 int			p_e_c(t_map *ptr);
 void		draw_map(t_game *game);
+void		draw_start(t_game *game);
 void		ground(t_game *game);
+void		put_compenent(t_game *game);
+void		put_image(t_game *game, char *filename);
+void		set_player_path(t_game *game);
+void		put_player(t_game *game, char *filename);
+int			ft_wc_l(char **str);
+void		ft_up(t_game *game);
+void		ft_down(t_game *game);
+void		ft_right(t_game *game);
+void		ft_lift(t_game *game);
+int			double_p_e(char *str);
+int			ft_parse(t_map *ptr);
+int			check_item(t_map *ptr, int c);
+int			check_map(char **ptr);
+void		ft_free_tmp(char **tmp);
+char		**ft_strci(char **src);
 
 #endif
