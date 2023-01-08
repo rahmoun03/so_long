@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:27:50 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/01/08 03:54:31 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:58:08 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	key_hook(int key, t_game *game)
 		ft_lift(game);
 	if (key == 53)
 	{
-		printf("%s ______ YOU EXIT THE GAME _____ %s", "\033[7m\033[33m",
-			"\033[0m");
+		printf("%s ______ YOU EXIT THE GAME _____ %s", "\033[7m\033[33m", \
+		"\033[0m");
 		exit(0);
 	}
 	if (key == 36 && game->start <= 1)
@@ -90,7 +90,8 @@ void	put_game(t_game *game, t_map *ptr)
 	game->mlx = mlx_init();
 	game->width = ft_strlen(ptr->maps[0]) * 50;
 	game->hight = ft_wc_l(ptr->maps) * 50;
-	game->win = mlx_new_window(game->mlx, game->width, game->hight, (char *)" BERCHO ");
+	game->win = mlx_new_window(game->mlx, game->width, game->hight,
+			(char *)" BERCHO ");
 	game->path->i = 0;
 	game->path->mov = 0;
 	game->path->eat = 0;

@@ -1,13 +1,18 @@
-CC = cc -Wall -Wextra  -Werror
-MLX = -lmlx -framework OpenGL -framework AppKit
 NAME = so_long
-OBJS = {SRCS:.c.o}
-SRCS = ft_split.c get_next_line_utils.c get_next_line.c main.c move_player.c move_player2.c \
-pars.c pars2.c pars3.c put_game.c so_long.c so_long_utils.c
+MLX = -lmlx -framework OpenGL -framework AppKit
+FLAGS = -Wall -Wextra -Werror
+F = ft_split.c get_next_line_utils.c get_next_line.c move_player.c move_player2.c \
+	pars.c pars2.c pars3.c put_game.c so_long.c so_long_utils.c main.c
 
+all : $(NAME)
 
-all:
-	${CC} ${SRCS} ${MLX} -o ${NAME}
+$(NAME) : $(F)
+	@gcc $(FLAGS) $(F) $(MLX) -o $(NAME)
+	@tput setaf 2; echo "THE GAME IS READY"
+
 clean:
-	rm -rf ${NAME}
-re:clean all
+	@rm -f so_long
+	@tput setaf 1; echo "CLEAN COMPLET"
+fclean: clean
+
+re: fclean all
