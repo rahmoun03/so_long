@@ -6,12 +6,13 @@
 /*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:27:55 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/01/08 03:18:01 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:23:58 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "so_long.h"
+#include "ft_printf.h"
 
 int	new_line(char *str)
 {
@@ -84,10 +85,10 @@ int	val_or_not(int fd, t_map *ptr)
 	ptr->maps = read_map(fd, ptr);
 	if (ptr->maps && sum_fun(ptr) == 1)
 	{
-		printf(" %smap is valid %s\n", GREEN, "\033[0m");
+		ft_printf(" %smap is valid %s\n", GREEN, "\033[0m");
 		return (1);
 	}
 	else
-		printf(" %sinvalid map %s\n", RED, "\033[0m");
+		ft_printf(" %sinvalid map %s\n", RED, "\033[0m");
 	return (0);
 }

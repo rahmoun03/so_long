@@ -6,12 +6,13 @@
 /*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:02:53 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/01/08 03:18:44 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:45:23 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "so_long.h"
+#include "ft_printf.h"
 
 int	double_p_e(char *str)
 {
@@ -52,7 +53,7 @@ int	center_map(t_map *ptr)
 	ptr->j = 0;
 	if (ptr->maps[ptr->a][ptr->j] != '1')
 	{
-		printf("ERROR IN LINE : %d\n", ptr->a + 1);
+		ft_printf("ERROR IN LINE : %d\n", ptr->a + 1);
 		return (0);
 	}
 	while (ptr->maps[ptr->a][ptr->j])
@@ -63,7 +64,7 @@ int	center_map(t_map *ptr)
 	}
 	if (ptr->maps[ptr->a][--ptr->j] != '1')
 	{
-		printf("ERROR IN LINE : %d\n", ptr->a + 1);
+		ft_printf("ERROR IN LINE : %d\n", ptr->a + 1);
 		return (0);
 	}
 	return (1);
@@ -77,7 +78,7 @@ int	ft_parse(t_map *ptr)
 	ptr->a = 0;
 	if (ft_strchr(ptr->maps[ptr->a], '0'))
 	{
-		printf("ERROR IN LINE : %d\n", ptr->a + 1);
+		ft_printf("ERROR IN LINE : %d\n", ptr->a + 1);
 		return (0);
 	}
 	while (ptr->maps[++ptr->a])
@@ -88,7 +89,7 @@ int	ft_parse(t_map *ptr)
 	}
 	if (ft_strchr(ptr->maps[--ptr->a], '0'))
 	{
-		printf("ERROR IN LINE : %d\n", ptr->a + 1);
+		ft_printf("ERROR IN LINE : %d\n", ptr->a + 1);
 		return (0);
 	}
 	return (1);

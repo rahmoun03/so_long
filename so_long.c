@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:27:47 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/01/08 00:06:55 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:45:46 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,14 @@ void	put_player(t_game *game, char *filename)
 	mlx_put_image_to_window(game->mlx, game->win, game->xpm, game->xlpayer,
 		game->ylpayer);
 	mlx_destroy_image(game->mlx, game->xpm);
+}
+
+int	ft_wc_l(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

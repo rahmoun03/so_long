@@ -6,12 +6,12 @@
 /*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 03:34:07 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/01/08 03:34:29 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:41:26 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "so_long.h"
+#include "ft_printf.h"
 
 void	move_right(t_game *game)
 {
@@ -28,7 +28,7 @@ void	move_right(t_game *game)
 		game->xlpayer += 50;
 		put_player(game, game->path->ground);
 		put_player(game, game->path->player[game->path->i]);
-		printf("MOVES : %d\n", ++game->path->mov);
+		ft_printf("MOVES : %d\n", ++game->path->mov);
 	}
 	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer
 			/ 50) + 1] != '1' && game->start > 2
@@ -37,7 +37,7 @@ void	move_right(t_game *game)
 		put_player(game, game->path->ground);
 		game->xlpayer += 50;
 		put_player(game, game->path->player[game->path->i]);
-		printf("MOVES : %d\n", ++game->path->mov);
+		ft_printf("MOVES : %d\n", ++game->path->mov);
 		exit(0);
 	}
 }
@@ -71,7 +71,7 @@ void	move_lift(t_game *game)
 		game->xlpayer -= 50;
 		put_player(game, game->path->ground);
 		put_player(game, game->path->player[game->path->i]);
-		printf("MOVES : %d\n", ++game->path->mov);
+		ft_printf("MOVES : %d\n", ++game->path->mov);
 	}
 	else if (game->start > 2 && game->map[game->ylpayer / 50][(game->xlpayer
 			/ 50) - 1] != '1' && game->start > 2
@@ -80,7 +80,7 @@ void	move_lift(t_game *game)
 		put_player(game, game->path->ground);
 		game->xlpayer -= 50;
 		put_player(game, game->path->player[game->path->i]);
-		printf("MOVES : %d\n", ++game->path->mov);
+		ft_printf("MOVES : %d\n", ++game->path->mov);
 		exit(0);
 	}
 }

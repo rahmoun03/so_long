@@ -6,21 +6,19 @@
 /*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:27:50 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/01/08 16:58:08 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:45:36 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "so_long.h"
+#include "ft_printf.h"
 
-int	ft_wc_l(char **str)
+int	ft_exit(int key, t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	(void)game;
+	exit(0);
+	return (key);
 }
 
 int	key_hook(int key, t_game *game)
@@ -35,8 +33,8 @@ int	key_hook(int key, t_game *game)
 		ft_lift(game);
 	if (key == 53)
 	{
-		printf("%s ______ YOU EXIT THE GAME _____ %s", "\033[7m\033[33m", \
-		"\033[0m");
+		ft_printf("%s ______ YOU EXIT THE GAME _____ %s", "\033[7m\033[33m",
+			"\033[0m");
 		exit(0);
 	}
 	if (key == 36 && game->start <= 1)
@@ -99,5 +97,6 @@ void	put_game(t_game *game, t_map *ptr)
 	game->map = ptr->maps;
 	draw_start(game);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
+	mlx_hook(game->win, 17, 1L << 0, ft_exit, game);
 	mlx_loop(game->mlx);
 }

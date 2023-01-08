@@ -6,12 +6,13 @@
 /*   By: arahmoun <arahmoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:28:04 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/01/07 23:28:05 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:52:17 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "so_long.h"
+#include "ft_printf.h"
 
 int	check_path(char *str)
 {
@@ -51,7 +52,10 @@ int	main(int ac, char **av)
 	game = (t_game *)malloc(sizeof(t_game));
 	fd = open(av[1], O_RDWR);
 	if (ac != 2 || fd == -1 || !check_path(av[1]))
-		return (printf(" %sinvalid path %s ", RED, DEFFAULT));
+	{
+		ft_printf(" %sinvalid path %s ", RED, DEFFAULT);
+		return (0);
+	}
 	if (val_or_not(fd, ptr) == 0)
 		return (0);
 	else
