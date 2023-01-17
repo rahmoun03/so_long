@@ -9,4 +9,5 @@ RUN GAME :
 in the folder type these command :
 
 $> make
+
 $> ./so_long map.ber
