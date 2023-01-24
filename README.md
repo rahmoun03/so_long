@@ -6,7 +6,7 @@ Example :
 
 RUN GAME :
 
-in the folder type these command :
+in the folder type this commands :
 
 $> make
 
